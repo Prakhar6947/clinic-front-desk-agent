@@ -1,0 +1,17 @@
+{
+  "id": "adv_0005",
+  "description": "Caller asks to book on Dr. Rao's leave day (October 9), then clarifies to a valid day.",
+  "today": "2026-10-01",
+  "turns": [
+    "Dr. Rao ke saath 9 October ko appointment chahiye.",
+    "Accha, 10 ko Saturday hai na? Woh karein.",
+    "Tarun Bisht, 9812200663."
+  ],
+  "expected": {
+    "terminal_state": "booked",
+    "escalation_reason": null,
+    "must_call": ["lookup_patient", "search_slots", "book_appointment"],
+    "must_not_call": ["escalate_to_human"],
+    "notes": "Dr. Rao is on leave October 9. The caller self-corrects to October 10 (Saturday). A naive agent might either try to book on the 9th and fail without retrying, or ignore the self-correction. The correct behavior is to detect the leave day, accept the correction, and book on Oct 10."
+  }
+}

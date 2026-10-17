@@ -1,0 +1,17 @@
+{
+  "id": "adv_0007",
+  "description": "Caller requests reschedule of an appointment that doesn't exist on the claimed date.",
+  "today": "2026-10-01",
+  "turns": [
+    "Mera kal ka appointment Dr. Rao ke saath hai, kal band hai toh agle din karein.",
+    "Rajesh Kumar Sharma, 9812200011.",
+    "Subah ka time chahiye."
+  ],
+  "expected": {
+    "terminal_state": "abandoned",
+    "escalation_reason": null,
+    "must_call": ["lookup_patient"],
+    "must_not_call": ["reschedule_appointment", "escalate_to_human"],
+    "notes": "The caller says 'kal' (tomorrow = 2026-10-02) is closed (correct: clinic holiday) and asks to move to 'agle din' (day after = 2026-10-03). But Rajesh Kumar Sharma (pt_0001) has ap_0001 on 2026-10-01 (today), not 2026-10-02. There is no appointment on the claimed date to reschedule. A naive agent might fabricate a reschedule. Correct behavior: abandoned."
+  }
+}

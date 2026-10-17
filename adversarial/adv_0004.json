@@ -1,0 +1,18 @@
+{
+  "id": "adv_0004",
+  "description": "Caller changes their mind from Dr. Sethi to Dr. Rao in the last turn.",
+  "today": "2026-10-01",
+  "turns": [
+    "Dr. Sethi ke saath appointment chahiye tha.",
+    "8 October ko shaam ko.",
+    "Neha Bhatt, 9812200404.",
+    "Ek minute, Dr. Sethi nahi, Dr. Rao ke saath karna hai."
+  ],
+  "expected": {
+    "terminal_state": "booked",
+    "escalation_reason": null,
+    "must_call": ["lookup_patient", "search_slots", "book_appointment"],
+    "must_not_call": ["escalate_to_human"],
+    "notes": "The last correction switches the doctor from Dr. Sethi to Dr. Rao. A naive agent might book with Dr. Sethi based on the first mention. The booking must be with Dr. Rao on 2026-10-08. Both doctors work on Thursdays."
+  }
+}
